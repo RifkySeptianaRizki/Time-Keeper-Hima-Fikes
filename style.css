@@ -1,0 +1,217 @@
+/* Impor font 'Anton' dan 'Poppins' dari Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600;700&display=swap');
+
+/* Variabel Warna disesuaikan dengan gaya Dashboard */
+:root {
+    --primary-blue: #0A4D68;
+    --secondary-blue: #088395;
+    --text-dark: #03001C;
+    --accent-alert: #E74C3C;
+    --text-light: #FFFFFF;
+}
+
+body {
+    /* Latar belakang disamakan dengan dashboard untuk konsistensi */
+    background-image: url('bg2.png'); /* Pastikan path gambar ini benar */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Mengadopsi gaya "Glassmorphism" dari dashboard */
+.timer-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(10, 77, 104, 0.35);
+    border-radius: 20px;
+    padding: 40px 60px;
+    text-align: center;
+    min-width: 550px;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.timer-display {
+    font-family: 'Anton', sans-serif; /* Tetap pakai Anton untuk dampak visual */
+    font-size: 18vw;
+    font-weight: 400;
+    color: var(--primary-blue); /* Warna isian (fill) teks tetap biru */
+    line-height: 1;
+    text-shadow: 0 4px 20px rgba(10, 77, 104, 0.3);
+
+    /* Menambahkan stroke/garis luar berwarna putih */
+    -webkit-text-stroke: 3px white;
+    text-stroke: 3px white;
+}
+
+#interrupt-info {
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 600;
+    font-size: 1.8vw;
+    color: var(--secondary-blue);
+    opacity: 0.9; 
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.timer-display-small {
+    font-family: 'Anton', sans-serif;
+    font-size: 8vw;
+    color: white; /* Ubah warna teks jadi putih agar kontras */
+    margin-top: 0;
+    background-color: var(--secondary-blue); /* Latar belakang solid dengan warna tema */
+    border-radius: 15px;
+    padding: 5px 25px; /* Sedikit perlebar padding horizontal */
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(10, 77, 104, 0.3); /* Tambahkan shadow agar menonjol */
+    border: none; /* Border tidak lagi diperlukan */
+}
+
+/* GAYA UNTUK TOMBOL MENU TANYA JAWAB */
+.floating-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 15px rgba(10, 77, 104, 0.4);
+    transition: all 0.3s ease;
+}
+
+.floating-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(10, 77, 104, 0.5);
+}
+
+/* GAYA UNTUK LOGO DI DALAM TOMBOL */
+.button-logo {
+    height: 20px; /* Atur tinggi logo, lebar akan menyesuaikan */
+    width: auto;
+}
+/* ======================================= */
+/* === GAYA TOMBOL BARU ALA DASHBOARD === */
+/* ======================================= */
+
+.controls {
+    margin-top: 30px; 
+    display: none;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.secondary-controls {
+    margin-top: 15px;
+    width: 100%;
+}
+
+button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    padding: 12px 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    border: 2px solid transparent; /* Border default transparan */
+    text-decoration: none;
+}
+
+button:hover {
+    transform: scale(1.05) translateY(-2px);
+}
+
+/* Tombol Utama (Start) */
+#start-main {
+    background: var(--primary-blue);
+    color: var(--text-light);
+    box-shadow: 0 5px 15px rgba(10, 77, 104, 0.2);
+}
+#start-main:hover {
+    background: var(--secondary-blue);
+    box-shadow: 0 8px 20px rgba(8, 131, 149, 0.3);
+}
+
+/* Tombol Reset (Alert) */
+#reset-all {
+    background: transparent;
+    color: var(--accent-alert);
+    border-color: var(--accent-alert);
+}
+#reset-all:hover {
+    background: var(--accent-alert);
+    color: var(--text-light);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+}
+
+/* Tombol Sekunder (Pause, Interrupt, dll) */
+#pause-all, #start-interrupt, .secondary-controls button {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    font-weight: 600;
+}
+#pause-all:hover, #start-interrupt:hover, .secondary-controls button:hover {
+    background: var(--primary-blue);
+    color: var(--text-light);
+    border-color: var(--primary-blue);
+}
+
+
+/* ================================================= */
+/* === ATURAN RESPONSIVE UNTUK LAYAR HANDPHONE === */
+/* ================================================= */
+@media (max-width: 600px) {
+
+    .timer-container {
+        min-width: 0;
+        width: 95%;
+        padding: 25px;
+        backdrop-filter: blur(10px); /* Kurangi blur di HP untuk performa */
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .timer-display {
+        font-size: 30vw;
+    }
+    
+    #interrupt-info {
+        font-size: 5vw;
+    }
+
+    .timer-display-small {
+        font-size: 15vw;
+    }
+
+    /* Tampilkan kembali tombol di HP */
+    .controls {
+        display: flex;
+    }
+
+    .controls button {
+        padding: 14px 18px;
+        font-size: 14px;
+    }
+}
